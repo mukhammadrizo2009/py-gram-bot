@@ -2,12 +2,14 @@ import time
 import requests
 
 from .types import Update
+from .dispatcher import Dispatcher
 
 
 class Updater:
 
     def __init__(self, token):
         self.token = token
+        self.dispatcher = Dispatcher()
         self.offset = 0
 
     def get_udpates(self):
@@ -31,7 +33,6 @@ class Updater:
         while True:
             for update in self.get_udpates():
                 self.offset = update.update_id + 1
-
-                print(update.update_id)
+                self.dispatcher.process_update(update)
 
             time.sleep(1)
