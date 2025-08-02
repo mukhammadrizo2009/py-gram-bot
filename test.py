@@ -13,3 +13,5 @@ updater = Updater(TOKEN)
 updater.dispatcher.add_handler(MessageHandler(handle_message))
 
 updater.start_polling()
+
+#Kodni qayta yozib chiqdim!
